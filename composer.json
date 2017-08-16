@@ -11,6 +11,7 @@
         "ezyang/htmlpurifier": "^4.8",
         "composer/semver": "^1.0",
         "zendframework/zend-authentication": "^2.5.3",
+        "zendframework/zend-cache": "^2.7.1",
         "zendframework/zend-config": "^2.6",
         "zendframework/zend-crypt": "^3.0",
         "zendframework/zend-dom": "^2.6",

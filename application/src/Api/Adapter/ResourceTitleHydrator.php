@@ -37,12 +37,13 @@ class ResourceTitleHydrator
      */
     public function getResourceTitle(Resource $entity, Property $titleProperty)
     {
-        $criteria = Criteria::create()
-            ->where(Criteria::expr()->eq('property', $titleProperty))
-            ->andWhere(Criteria::expr()->neq('value', null))
-            ->andWhere(Criteria::expr()->neq('value', ''))
-            ->setMaxResults(1);
-        $titleValues = $entity->getValues()->matching($criteria);
-        return $titleValues->isEmpty() ? null : $titleValues->first()->getValue();
+        foreach ($entity->getValues() as $value) {
+            if (($titleProperty === $value->getProperty())
+                && (null !== $value->getValue())
+                && ('' !== $value->getValue())
+            ) {
+                return $value->getValue();
+            }
+        }
     }
 }
